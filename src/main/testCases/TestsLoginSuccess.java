@@ -1,33 +1,24 @@
 package testCases;
 
-import io.appium.java_client.android.AndroidDriver;
-import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import java.io.File;
-import java.net.URL;
+import main.utils.TestSetup;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
-import javax.imageio.ImageIO;
-
-public class tcLoginSuccess {
-    public static AndroidDriver driver;
+public class TestsLoginSuccess extends TestSetup {
     DateFormat dateFormat;
 
     @Test()
@@ -184,34 +175,15 @@ public class tcLoginSuccess {
         }
     }
 
+    @Test()
+    public void Demo(){
+        WebElement dpRole = driver.findElementByClassName("android.widget.Spinner");
+        driver.findElementByXPath("//*[contains(@content-desc, 'Bác sĩ ')]").click();
+        driver.findElementByXPath("//*[contains(@content-desc, 'ĐĂNG NHẬP ')]").click();
 
-    @BeforeTest
-    public void beforeTest() {
-        File pathRoot = new File(System.getProperty("user.dir"));
-        //File appDir = new File(pathRoot,"/");
-        File app = new File(pathRoot, "/apk/benepay-staging.apk");
 
-        DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("deviceName", "Galaxy S6");
-        cap.setCapability("platformVersion", "6.0");
-        cap.setCapability("platformName", "Android");
-        cap.setCapability("app", app.getAbsolutePath());
-        //cap.setCapability("appPackage", "com.evolable.benepay.debug");
-        cap.setCapability("automationName", "appium");
-        //cap.setCapability("appWaitActivity", "com.evolable.benepay.MainActivity");
-        cap.setCapability("clearSystemFiles", true);
-
-        try {
-            driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap) {
-            };
-        } catch (MalformedURLException e) {
-            System.out.println(e.getMessage());
-        }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @AfterTest
-    public void afterTest() {
-        driver.quit();
-    }
+
+
 }
