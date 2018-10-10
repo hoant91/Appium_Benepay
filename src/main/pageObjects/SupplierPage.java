@@ -17,14 +17,14 @@ public class SupplierPage extends TestSetup {
     public static WebElement getAllowButton() {
         WebElement element = null;
         try {
-            element = driver.findElementById("permission_allow_button");
+            element = driver.findElementById("com.android.packageinstaller:id/permission_allow_button");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return element;
     }
 
-    public static WebElement getTuturialView() {
+    public static WebElement getTutorialView() {
         WebElement element = null;
         try {
             element = driver.findElementById("tutorial_view");
