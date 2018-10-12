@@ -3,6 +3,8 @@ package main.pageObjects;
 import main.utils.TestSetup;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 public class SupplierPage extends TestSetup {
     public static WebElement locationPopUp() {
         WebElement element = null;
@@ -27,6 +29,7 @@ public class SupplierPage extends TestSetup {
     public static WebElement getTutorialView() {
         WebElement element = null;
         try {
+            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             element = driver.findElementById("tutorial_view");
         } catch (Exception e) {
             System.out.println(e.getMessage());
