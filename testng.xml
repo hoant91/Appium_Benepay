@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="tests" thread-count="2" verbose="1">
+    <test name="android 6">
+        <parameter name="platform" value="Android 6.0.1"/>
+        <parameter name="udid" value="420053e9686f2413"/>
+        <parameter name="systemPort" value="8200"/>
+        <classes>
+            <class name="main.testCases.SocialHouseTests">
+                <methods>
+                    <include name="validateMenu"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="android 7">
+        <parameter name="platform" value="Android 7.0.1"/>
+        <parameter name="udid" value="420053e9686f2421"/>
+        <parameter name="systemPort" value="8199"/>
+        <classes>
+            <class name="main.testCases.SocialHouseTests">
+                <methods>
+                    <include name="validateMenu"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
